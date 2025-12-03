@@ -30,53 +30,37 @@
             </div>
 
             <!-- Navigation -->
-            <nav class="flex-1 p-4">
+                 <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="#" class="sidebar-active flex items-center space-x-3 p-3 rounded-lg">
+                        <a href="#"
+                            class="sidebar-active flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-tachometer-alt w-5"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="incomes.php" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                        <a href="incomes.php"
+                            class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-money-bill-wave w-5"></i>
                             <span>Incomes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="expences.php" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                        <a href="expences.php" 
+                        class="s flex items-center space-x-3 p-3 rounded-lg">
                             <i class="fas fa-shopping-cart w-5"></i>
                             <span>Expenses</span>
                         </a>
                     </li>
-
                     <li>
-                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                        <a href="#"
+                            class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-file-export w-5"></i>
                             <span>Reports</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-cog w-5"></i>
-                            <span>Settings</span>
-                        </a>
-                    </li>
                 </ul>
-
-                <!-- User Profile -->
-                <div class="mt-auto pt-6 border-t">
-                    <div class="flex items-center space-x-3 p-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-blue-600"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Alex Johnson</p>
-                            <p class="text-sm text-gray-500">User</p>
-                        </div>
-                    </div>
-                </div>
             </nav>
         </div>
 
