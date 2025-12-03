@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="index.php"
+                            <a href="expences.php"
                                 class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                                 <i class="fas fa-shopping-cart w-5"></i>
                                 <span>Expenses</span>
@@ -53,7 +53,7 @@
                         </li>
                     
                         <li>
-                            <a href="reports.html"
+                            <a href="#"
                                 class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                                 <i class="fas fa-file-export w-5"></i>
                                 <span>Reports</span>
