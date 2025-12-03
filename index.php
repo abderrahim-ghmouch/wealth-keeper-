@@ -1,3 +1,7 @@
+<?php 
+    include_once "./database.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -423,34 +427,21 @@
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <form id="transactionForm">
+            <form action="./addIncome.php" method="post" id="transactionForm">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-gray-700 mb-2">Transaction Type</label>
-                        <div class="flex space-x-4">
-                            <label class="flex items-center">
-                                <input type="radio" name="type" value="income" class="mr-2" checked>
-                                <span>Income</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="radio" name="type" value="expense" class="mr-2">
-                                <span>Expense</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
                         <label class="block text-gray-700 mb-2">Description</label>
-                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg"
+                        <input required name="description" type="text" class="w-full p-3 border border-gray-300 rounded-lg"
                             placeholder="Enter description">
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2">Amount</label>
-                        <input type="number" step="0.01" class="w-full p-3 border border-gray-300 rounded-lg"
+                        <input type="number" name="amount" required step="0.01" class="w-full p-3 border border-gray-300 rounded-lg"
                             placeholder="0.00">
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2">Category</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg">
+                        <select name="destination" class="w-full p-3 border border-gray-300 rounded-lg" required>
                             <option value="">Select Category</option>
                             <option value="salary">Salary</option>
                             <option value="freelance">Freelance</option>
@@ -458,11 +449,12 @@
                             <option value="transport">Transportation</option>
                             <option value="shopping">Shopping</option>
                             <option value="bills">Bills & Utilities</option>
+                            <option value="others">Others</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2">Date</label>
-                        <input type="date" class="w-full p-3 border border-gray-300 rounded-lg">
+                        <input name="date_income" type="date" class="w-full p-3 border border-gray-300 rounded-lg">
                     </div>
                 </div>
                 <div class="mt-8 flex justify-end space-x-4">
@@ -475,7 +467,107 @@
         </div>
     </div>
 
+    <script>
+    // Initialize Chart
+    const ctx = document.getElementById('financeChart').getContext('2d');
+    const financeChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+                    label: 'Income',
+                    data: [2200, 2400, 2800, 3000, 2900, 3250],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: 'Expenses',
+                    data: [1200, 1400, 1100, 1500, 1300, 1399],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value;
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    });
 
+    // Modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const addTransactionBtn = document.querySelector('button.bg-blue-600');
+        const transactionModal = document.getElementById('transactionModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelModalBtn = document.getElementById('cancelModal');
+
+        if (addTransactionBtn) {
+            addTransactionBtn.addEventListener('click', function() {
+                transactionModal.classList.remove('hidden');
+            });
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function() {
+                transactionModal.classList.add('hidden');
+            });
+        }
+
+        if (cancelModalBtn) {
+            cancelModalBtn.addEventListener('click', function() {
+                transactionModal.classList.add('hidden');
+            });
+        }
+
+        // Close modal when clicking outside
+        transactionModal.addEventListener('click', function(e) {
+            if (e.target === transactionModal) {
+                transactionModal.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        const transactionForm = document.getElementById('transactionForm');
+
+        // Make table rows clickable (for edit functionality)
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', function() {
+                // This would open an edit modal in a real app
+                console.log('Edit transaction:', this.cells[0].textContent);
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>
