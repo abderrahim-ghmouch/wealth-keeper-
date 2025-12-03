@@ -8,42 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-    .sidebar-active {
-        background-color: #3b82f6;
-        color: white;
-    }
-
-    .fade-in {
-        animation: fadeIn 0.3s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .slide-in {
-        animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-        }
-
-        to {
-            transform: translateX(0);
-        }
-    }
-    </style>
+    <href="style.css" rel="stylesheet"></href>
+   
 </head>
 
 <body class="bg-gray-50">
@@ -73,13 +39,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-active flex items-center space-x-3 p-3 rounded-lg">
+                        <a href="incomes.php" class="sidebar-active flex items-center space-x-3 p-3 rounded-lg">
                             <i class="fas fa-money-bill-wave w-5"></i>
                             <span>Incomes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="expences.php"
+                        <a href="index.php"
                             class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-shopping-cart w-5"></i>
                             <span>Expenses</span>
@@ -107,7 +73,7 @@
                         <p class="text-gray-600">Track and manage all your income sources</p>
                     </div>
                     <button id="addIncomeBtn"
-                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
                         <i class="fas fa-plus"></i>
                         <span>Add New Income</span>
                     </button>

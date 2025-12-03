@@ -52,19 +52,19 @@
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="dashboard.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                        <a href="index.php" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-tachometer-alt w-5"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="incomes.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                        <a href="incomes.php" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-money-bill-wave w-5"></i>
                             <span>Incomes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="expenses.html" class="sidebar-active flex items-center space-x-3 p-3 rounded-lg">
+                        <a href="expenses.php" class="sidebar-active flex items-center space-x-3 p-3 rounded-lg">
                             <i class="fas fa-shopping-cart w-5"></i>
                             <span>Expenses</span>
                         </a>
