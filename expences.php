@@ -8,29 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .sidebar-active {
-            background-color: #3b82f6;
-            color: white;
-        }
-        .fade-in {
-            animation: fadeIn 0.3s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .slide-in {
-            animation: slideIn 0.3s ease-out;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        .progress-bar {
-            transition: width 0.5s ease-in-out;
-        }
-    </style>
+ <link rel="stylesheet" href="style.css">
+  
 </head>
 <body class="bg-gray-50">
     <!-- Main Container -->
@@ -43,7 +22,7 @@
                     <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                         <i class="fas fa-chart-line text-white text-xl"></i>
                     </div>
-                    <h1 class="text-2xl font-bold text-gray-800">FinTrack</h1>
+                    <h1 class="text-2xl font-bold text-gray-800">smart wallet</h1>
                 </div>
                 <p class="text-gray-500 text-sm mt-1">Personal Finance Manager</p>
             </div>
@@ -69,24 +48,14 @@
                             <span>Expenses</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="categories.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-chart-pie w-5"></i>
-                            <span>Categories</span>
-                        </a>
-                    </li>
+                   
                     <li>
                         <a href="reports.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
                             <i class="fas fa-file-export w-5"></i>
                             <span>Reports</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="budget.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-wallet w-5"></i>
-                            <span>Budget</span>
-                        </a>
-                    </li>
+                  
                 </ul>
             </nav>
         </div>
@@ -106,40 +75,7 @@
                     </button>
                 </div>
 
-                <!-- Filters -->
-                <div class="mt-4 flex flex-wrap gap-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-gray-700">Filter by:</span>
-                        <select id="categoryFilter" class="border border-gray-300 rounded-lg px-3 py-1">
-                            <option value="">All Categories</option>
-                            <option value="food">Food & Dining</option>
-                            <option value="transport">Transportation</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="housing">Housing</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="utilities">Utilities</option>
-                            <option value="health">Health</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <input type="month" id="monthFilter" class="border border-gray-300 rounded-lg px-3 py-1">
-                        <select id="paymentMethodFilter" class="border border-gray-300 rounded-lg px-3 py-1">
-                            <option value="">All Payment Methods</option>
-                            <option value="cash">Cash</option>
-                            <option value="card">Credit Card</option>
-                            <option value="bank">Bank Transfer</option>
-                            <option value="digital">Digital Wallet</option>
-                        </select>
-                        <button id="applyFilter" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-200">
-                            Apply
-                        </button>
-                        <button id="resetFilter" class="text-gray-500 hover:text-gray-700">
-                            Reset
-                        </button>
-                    </div>
-                    <div class="ml-auto">
-                        <input type="text" id="searchInput" placeholder="Search expenses..." class="border border-gray-300 rounded-lg px-3 py-1 w-64">
-                    </div>
-                </div>
+            
             </header>
 
             <!-- Main Content Area -->
@@ -305,27 +241,7 @@
                         </table>
                     </div>
 
-                    <!-- Pagination -->
-                    <div class="p-4 border-t border-gray-200 flex justify-between items-center">
-                        <div class="text-gray-600 text-sm">
-                            Showing <span id="startRow">0</span> to <span id="endRow">0</span> of <span id="totalRows">0</span> entries
-                        </div>
-                        <div class="flex space-x-2">
-                            <button id="prevPage" class="px-3 py-1 border border-gray-300 rounded-lg disabled:opacity-50" disabled>
-                                Previous
-                            </button>
-                            <div class="flex items-center">
-                                <span class="mx-2">Page</span>
-                                <input type="number" id="currentPage" value="1" min="1" class="w-12 text-center border border-gray-300 rounded-lg">
-                                <span class="mx-2">of <span id="totalPages">1</span></span>
-                            </div>
-                            <button id="nextPage" class="px-3 py-1 border border-gray-300 rounded-lg disabled:opacity-50" disabled>
-                                Next
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                  
                 <!-- Recent High Expenses -->
                 <div class="mt-8 bg-white rounded-xl p-6 shadow-sm border border-gray-200">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">Recent High Expenses (> $100)</h3>

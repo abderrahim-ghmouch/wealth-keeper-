@@ -10,38 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinTrack - Personal Finance Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-    .sidebar-active {
-        background-color: #3b82f6;
-        color: white;
-    }
-
-    .sidebar-active:hover {
-        background-color: #2563eb;
-    }
-
-    .card-hover:hover {
-        transform: translateY(-5px);
-        transition: transform 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .fade-in {
-        animation: fadeIn 0.5s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-    </style>
+ <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-50">
