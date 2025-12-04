@@ -1,9 +1,15 @@
 <?php 
-    include_once " __DO__ ./database.php";
+    include_once __DIR__ . "/database.php";
+
+    $stmt = $db->query("select * from incomes", PDO::FETCH_ASSOC);
+    $incomes = $stmt->fetchAll();
+
+    $stmt = $db->query("select round(sum(amount), 2) as total from incomes", PDO::FETCH_ASSOC);
+    $total_Income = $stmt->fetchColumn(0);
+    $stmt= $db->query("Select round(sum(amount), 2) as total from incomes where MONTH(date_income) = Month(Now());",PDO::FETCH_ASSOC);
+    $this_Month= $stmt->fetchColumn(0);
+    
 ?>
-
-
-
 
 <!DOCTYPE html>
     <html lang="en">
@@ -96,7 +102,7 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <p class="text-green-100">Total Income</p>
-                                    <h3 id="totalIncome" class="text-3xl font-bold mt-2">$0.00</h3>
+                                    <h3 id="totalIncome" class="text-3xl font-bold mt-2">$<?= $total_Income ?>.00</h3>
                                     <p class="text-green-100 mt-2">All time</p>
                                 </div>
                                 <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
@@ -110,11 +116,8 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <p class="text-gray-500">This Month</p>
-                                    <h3 id="monthlyIncome" class="text-3xl font-bold mt-2 text-gray-800">$0.00</h3>
-                                    <p class="text-green-500 mt-2">
-                                        <i class="fas fa-arrow-up mr-1"></i>
-                                        <span id="monthlyChange">0%</span> from last month
-                                    </p>
+                                    <h3 id="monthlyIncome" class="text-3xl font-bold mt-2 text-gray-800">$<?= $this_Month ?>.00</h3>
+    
                                 </div>
                                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                                     <i class="fas fa-calendar-alt text-blue-600 text-2xl"></i>
@@ -173,13 +176,30 @@
                                 </thead>
                                 <tbody id="incomesTableBody">
                                     <!-- Incomes will be loaded here dynamically -->
-                                    <tr>
-                                        <td colspan="5" class="text-center py-8 text-gray-500" id="noIncomesMessage">
-                                            <i class="fas fa-money-bill-wave text-4xl text-gray-300 mb-4"></i>
-                                            <p class="text-lg">No income records found</p>
-                                            <p class="text-sm mt-1">Click "Add New Income" to get started</p>
-                                        </td>
-                                    </tr>
+                                    <?php 
+                                        if(count($incomes) > 0){
+                                            foreach($incomes as $income){
+                                                echo "
+                                                    <tr class='text-center'>
+                                                        <td>{$income['description']}</td>
+                                                        <td>{$income['destination']}</td>
+                                                        <td>{$income['amount']}</td>
+                                                        <td>{$income['date_income']}</td>
+                                                    </tr>
+                                                ";
+                                            }
+                                        }else{
+                                            echo "
+                                                <tr>
+                                                    <td colspan='5' class='text-center py-8 text-gray-500' id='noIncomesMessage'>
+                                                        <i class='fas fa-money-bill-wave text-4xl text-gray-300 mb-4'></i>
+                                                        <p class='text-lg'>No income records found</p>
+                                                        <p class='text-sm mt-1'>Click 'Add New Income' to get started</p>
+                                                    </td>
+                                                </tr>
+                                            ";
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -222,28 +242,29 @@
                     </button>
                 </div>
 
-                <form id="incomeForm" class="space-y-4" action="addincome.php" method="post">
+                <form id="incomeForm" class="space-y-4" action="./crud_incomes/addIncome.php" method="post">
                     <input  id="incomeId">
 
                     <div>
                         <label class="block text-gray-700 mb-2">Description *</label>
-                        <input type="text" id="description" required name="destination"
+                        <input type="text" id="description" name="description"
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Salary, Freelance work, etc.">
+                        >
                         <div id="descriptioFnError" class="text-red-500 text-sm mt-1 ">Description is required</div>
                     </div>
 
                     <div>
                         <label class="block text-gray-700 mb-2">Category *</label>
-                        <select id="category" required
+                        <select id="category" required name="destination"
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option value="">Select Category</option>
                             <option value="salary">Salary</option>
                             <option value="freelance">Freelance</option>
-                            <option value="investment">Investment</option>
-                            <option value="bonus">Bonus</option>
-                            <option value="rental">Rental Income</option>   
-                            <option value="other">Other</option>
+                            <option value="food">Food</option>
+                            <option value="transport">Transport</option>
+                            <option value="shopping">Shoping</option>   
+                            <option value="bills">bills</option>
+                            <option value="others">others</option>
                         </select>
                         <div id="categoryError" class="text-red-500 text-sm mt-1">Category is required</div>
                     </div>
@@ -252,7 +273,7 @@
                         <label class="block text-gray-700 mb-2">Amount *</label>
                         <div class="relative">
                             <span class="absolute left-3 top-3 text-gray-500">$</span>
-                            <input type="number" id="amount" step="0.01" min="0" required
+                            <input type="number" id="amount" step="0.01" min="0" name="amount" required
                                 class="w-full p-3 pl-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0.00">
                         </div>
@@ -261,16 +282,9 @@
 
                     <div>
                         <label class="block text-gray-700 mb-2">Date *</label>
-                        <input type="date" id="date" required
+                        <input type="date" id="date" name="date_income"required
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <div id="dateError" class="text-red-500 text-sm mt-1 ">Date is required</div>
-                    </div>
-
-                    <div>
-                        <label class="block text-gray-700 mb-2">Notes (Optional)</label>
-                        <textarea id="notes" rows="3"
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Additional details about this income"></textarea>
                     </div>
 
                     <div class="mt-8 flex justify-end space-x-4">
@@ -287,9 +301,6 @@
             </div>
         </div>
         <script src="main.js"></script>
-
- 
-
     
     </body>
 
