@@ -8,7 +8,18 @@
     $total_Income = $stmt->fetchColumn(0);
     $stmt= $db->query("Select round(sum(amount), 2) as total from incomes where MONTH(date_income) = Month(Now());",PDO::FETCH_ASSOC);
     $this_Month= $stmt->fetchColumn(0);
+    $stmt=$db->query("Select round(sum(amount), 2) as total from incomes where YEAR(date_income) = YEAR(Now()) group by MONTH(date_income);",PDO::FETCH_ASSOC);
+    $all_Month=$stmt->fetchAll();
+
+    $sum=0;
     
+    foreach ($all_Month as $element) {
+        $sum += $element["total"];
+    }
+
+    $avreage=$sum/12;
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -130,8 +141,7 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <p class="text-gray-500">Average Monthly</p>
-                                    <h3 id="averageIncome" class="text-3xl font-bold mt-2 text-gray-800">$0.00</h3>
-                                    <p class="text-gray-500 mt-2">Based on last 6 months</p>
+                                    <h3 id="averageIncome" class="text-3xl font-bold mt-2 text-gray-800">$<?=$avreage?></h3>      
                                 </div>
                                 <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                                     <i class="fas fa-chart-bar text-purple-600 text-2xl"></i>
