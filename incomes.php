@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
     
     </head>
-
+x
     <body class="bg-gray-50 ">
         <!-- Main Container -->
         <div class="flex h-screen">
