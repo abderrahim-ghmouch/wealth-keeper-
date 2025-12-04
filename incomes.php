@@ -195,6 +195,13 @@
                                                         <td>{$income['destination']}</td>
                                                         <td>{$income['amount']}</td>
                                                         <td>{$income['date_income']}</td>
+                                                        <td class='flex gap-2'>
+                                                 <button id='updBtn'>update</button> 
+                                                 <form id='deletFom'>
+                                                 
+                                                 <button>delete</button>
+                                                 </form>
+                                                      </td>
                                                     </tr>
                                                 ";
                                             }
@@ -248,7 +255,7 @@
                 <div class="flex justify-between items-center mb-6">
                     <h3 id="modalTitle" class="text-xl font-bold text-gray-800">Add New Income</h3>
                     <button id="closeModal" class="text-gray-500 hover:text-gray-700">
-                        <i id="colseingBtn" class="fas fa-times text-xl"></i>
+                        <i id="colsingBtn" class="fas fa-times text-xl"></i>
                     </button>
                 </div>
 
@@ -310,6 +317,73 @@
                 </form>
             </div>
         </div>
+
+
+
+
+
+
+
+
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"id="update">
+                    <input  id="incomeId">
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Description *</label>
+                        <input type="text" id="description" name="description"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                        <div id="descriptioFnError" class="text-red-500 text-sm mt-1 ">Description is required</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Category *</label>
+                        <select id="category" required name="destination"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select Category</option>
+                            <option value="salary">Salary</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="food">Food</option>
+                            <option value="transport">Transport</option>
+                            <option value="shopping">Shoping</option>   
+                            <option value="bills">bills</option>
+                            <option value="others">others</option>
+                        </select>
+                        <div id="categoryError" class="text-red-500 text-sm mt-1">Category is required</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Amount *</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-500">$</span>
+                            <input type="number" id="amount" step="0.01" min="0" name="amount" required
+                                class="w-full p-3 pl-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="0.00">
+                        </div>
+                        <div id="amountError" class="text-red-500 text-sm mt-1 ">Amount must be greater than 0</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Date *</label>
+                        <input type="date" id="date" name="date_income"required
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <div id="dateError" class="text-red-500 text-sm mt-1 ">Date is required</div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end space-x-4">
+                        <button type="button" id="cancelBtn"
+                            class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button type="submit" id="submitBtn"
+                            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            Modify Income
+                        </button>
+                         <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i id="colsingUpd" class="fas fa-times text-xl"></i>
+                    </button>
+        </div>
+        <div id="delete"></div>
         <script src="main.js"></script>
     
     </body>
