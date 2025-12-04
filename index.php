@@ -1,5 +1,5 @@
 <?php 
-    include_once " __DIR__ ./database.php";
+    include_once " __DO__ ./database.php";
 ?>
 
 <!DOCTYPE html>
@@ -415,7 +415,7 @@
         </div>
     </div>
 
-    <script>
+<!--<script>
     // Initialize Chart
     const ctx = document.getElementById('financeChart').getContext('2d');
     const financeChart = new Chart(ctx, {
@@ -515,7 +515,7 @@
             });
         });
     });
-    </script>
+    </script>-->
 </body>
 
 </html>

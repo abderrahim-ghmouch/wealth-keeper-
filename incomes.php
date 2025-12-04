@@ -10,8 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style.css">
     
-    </head>
-x
+</head>
     <body class="bg-gray-50 ">
         <!-- Main Container -->
         <div class="flex h-screen">
@@ -280,7 +279,8 @@ x
                 </form>
             </div>
         </div>
-
+        
+<!-- 
         <script>
         // Sample data - In real app, this would come from PHP/MySQL
         let incomes = [{
@@ -835,7 +835,7 @@ x
                 timer: 3000
             });
         }
-        </script>
+      </script> -->
     </body>
 
     </html>
