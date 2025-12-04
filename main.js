@@ -1,7 +1,10 @@
-incomModal=document.getElementById("incomeForm")
-addIncome=document.getElementById("addIncomeBtn")
+const incomeModal = document.getElementById("incomeModal");
+const addIncome = document.getElementById("addIncomeBtn");
+const colseBtn=document.getElementById("colseingBtn")
+addIncome.addEventListener("click", () => {
+    incomeModal.classList.remove("hidden");
+});
 
-addIncome.addeventlistener("click",(e)=>{
-
-    incomModal.classList.remove("hidden")
+colseBtn.addEventListener("click",()=>{
+    incomeModal.classList.add("hidden")
 })
