@@ -279,7 +279,7 @@
                 </form>
             </div>
         </div>
-        
+        <script src="main.js"></script>
 <!-- 
         <script>
         // Sample data - In real app, this would come from PHP/MySQL
