@@ -30,24 +30,24 @@ closeUpdateBtns.forEach(btn => {
 
 
 // ---------------------- DELETE MODAL ----------------------
-const deleteModal = document.getElementById("deleteModal");
-const showDeleteBtns = document.querySelectorAll("#deleteButton");
+// const deleteModal = document.getElementById("deleteModal");
+// const showDeleteBtns = document.querySelectorAll("#deleteButton");
 
-const deleteBtn = document.getElementById("deleteBtn"); // confirm delete
-const cancelDelete = document.getElementById("cancelDelete"); // cancel delete
+// const deleteBtn = document.getElementById("deleteBtn"); // confirm delete
+// const cancelDelete = document.getElementById("cancelDelete"); // cancel delete
 
-showDeleteBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        deleteModal.classList.remove("hidden");
-    });
-});
+// showDeleteBtns.forEach(btn => {
+//     btn.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         deleteModal.classList.remove("hidden");
+//     });
+// });
 
-deleteBtn.addEventListener("click", () => {
-    deleteModal.classList.add("hidden");
-});
+// deleteBtn.addEventListener("click", () => {
+//     deleteModal.classList.add("hidden");
+// });
 
-cancelDelete.addEventListener("click", (e) => {
-    e.preventDefault();
-    deleteModal.classList.add("hidden");
-});
+// cancelDelete.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     deleteModal.classList.add("hidden");
+// });

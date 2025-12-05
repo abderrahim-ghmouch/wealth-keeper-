@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once __DIR__ . "/database.php";
 
 $stmt = $db->query("select * from incomes", PDO::FETCH_ASSOC);
@@ -18,7 +18,6 @@ foreach ($all_Month as $element) {
 }
 
 $avreage = $sum / 12;
-
 
 ?>
 
@@ -198,9 +197,9 @@ $avreage = $sum / 12;
                                                         <td>{$income['date_income']}</td>
                                                         <td class='flex gap-2'>
                                                  <button class='updBtn'>update</button> 
-                                                 <form id='deletFom'>
-                                                 
-                                                 <button id='deleteButton'>delete</button>
+                                                 <form id='deletFom' method=\"post\" action=\"crud_incomes/delIcome.php\">
+                                                 <input type=\"hidden\" name=\"id\" value=\"{$income["id"]}\" />
+                                                 <button id='deleteButton'> delete</button>
                                                  </form>
                                                       </td>
                                                     </tr>
@@ -353,30 +352,7 @@ $avreage = $sum / 12;
             </button>
         </div>
     </div>
-
-    <div id="deleteModal" class="fixed inset-0 bg-black/40 flex flex-col items-center justify-center z-50 hidden " >
-
-
-        <div class="bg-gray-500 w-[30%] h-auto justify-center ">
-        
-                <h1 class="text-black h- w-full">are you sure you wanna Delete it </h1>
-  
-
-
-            <div class="flex gap-10 justify-evenly">
-
-                <button type="button" id="deleteBtn"
-                    class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
-                    DELETE
-                </button>
-                <button   id="cancelDelete"
-                    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                    cancel
-                </button>
-            </div>
-        </div>
-
-    </div>
+</div>
 
     <script src="main.js"></script>
 

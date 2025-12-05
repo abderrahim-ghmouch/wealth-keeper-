@@ -1,19 +1,14 @@
 <?php
-include_once "./database.php";
-$destination = $_POST["destination"];
-$amount = $_POST["amount"];
-$description = $_POST["description"];
-$date_income = $_POST["date_income"];
-
-$stmt = $pdo->prepare("delete from incomes where id=?");
+include_once "../database.php";
+$id=$_POST["id"];
+$stmt = $db->prepare("delete from incomes where id=?");
 
 $status = $stmt->execute([$id]);
 
 if ($status) {
-    header("location: /");
+    header("location: /incomes.php");
     exit();
 }
 
 echo "Failed" ;
 
-?>
