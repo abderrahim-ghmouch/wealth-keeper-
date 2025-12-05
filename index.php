@@ -1,9 +1,4 @@
-<?php 
-    include_once " __DO__ ./database.php";
 
-    $stmt = $db->query("select * from incomes", PDO::FETCH_ASSOC);
-    $incomes = $stmt->fetchAll();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
