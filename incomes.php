@@ -190,7 +190,7 @@ $avreage = $sum / 12;
                                 if (count($incomes) > 0) {
                                     foreach ($incomes as $income) {
                                         echo "
-                                                    <tr class='text-center'>
+                                                <tr data-id='{$income['id']}' class='text-center'>
                                                         <td>{$income['description']}</td>
                                                         <td>{$income['destination']}</td>
                                                         <td>{$income['amount']}</td>
@@ -303,8 +303,8 @@ $avreage = $sum / 12;
                 </button>
             </div>
 
-            <form id="incomeForm" class="space-y-4" action="./crud_incomes/addIncome.php" method="post">
-                <input id="incomeId">
+            <form id="incomeForm" class="space-y-4" action="./crud_incomes/updIcncomes.php" method="post">
+                <input id="id" name="id" type="hidden">
 
                 <div>
                     <label class="block text-gray-700 mb-2">Description *</label>
@@ -342,7 +342,7 @@ $avreage = $sum / 12;
 
                 <div>
                     <label class="block text-gray-700 mb-2">Date *</label>
-                    <input type="date" id="date" name="date_income" required
+                    <input type="date" id="date_income" name="date_income" required
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     <div id="dateError" class="text-red-500 text-sm mt-1 ">Date is required</div>
                 </div>
