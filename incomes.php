@@ -1,4 +1,4 @@
- <?php
+<?php
 include_once __DIR__ . "/database.php";
 
 $stmt = $db->query("select * from incomes", PDO::FETCH_ASSOC);
@@ -141,7 +141,8 @@ $avreage = $sum / 12;
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-gray-500">Average Monthly</p>
-                                <h3 id="averageIncome" class="text-3xl font-bold mt-2 text-gray-800">$<?= $avreage ?></h3>
+                                <h3 id="averageIncome" class="text-3xl font-bold mt-2 text-gray-800">$<?= $avreage ?>
+                                </h3>
                             </div>
                             <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                                 <i class="fas fa-chart-bar text-purple-600 text-2xl"></i>
@@ -294,10 +295,10 @@ $avreage = $sum / 12;
         </div>
     </div>
 
-   <div id="updateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="updateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-xl p-6 w-full max-w-md slide-in">
             <div class="flex justify-between items-center mb-6">
-                <h3  class="text-xl font-bold text-gray-800">Modify Income</h3>
+                <h3 class="text-xl font-bold text-gray-800">Modify Income</h3>
                 <button id="closeUpdate" class="text-gray-500 hover:text-gray-700">
                     <i id="colsingBtn" class="fas fa-times text-xl"></i>
                 </button>
@@ -360,7 +361,7 @@ $avreage = $sum / 12;
             </form>
         </div>
     </div>
-</div>
+    </div>
 
     <script src="main.js"></script>
 

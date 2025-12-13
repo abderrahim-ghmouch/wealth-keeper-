@@ -9,9 +9,10 @@ $date_income = $_POST["date_income"];
 $stmt = $db->prepare("insert into incomes (destination,amount,description,date_income) values (?,?,?,?)");
 $status = $stmt->execute([$destination,$amount,$description,$date_income]);
 
+
 if ($status) {
      header("location: /incomes.php");
      exit();
  }
 
- echo "Faild Insert Income";
+ echo "Faild Insert Income";    

@@ -35,3 +35,12 @@ updateButtons.forEach(button => {
 cancelUpdate.addEventListener("click", () => {
     updateModal.classList.add("hidden");
 });
+
+
+const expensesButton = document.getElementById("addExpenseBtn")
+const expModal = document.getElementsByName("expenseModal")
+
+expensesButton.addEventListener("click",()=>{
+    
+    expModal.classList.remove("hidden")
+})
