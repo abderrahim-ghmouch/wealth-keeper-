@@ -1,4 +1,6 @@
+<?php include "totalIncome.php";
 
+include "totalExpences.php";?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
 <body class="bg-gray-50">
     <!-- Main Container -->
     <div class="flex h-screen">
-        <!-- Sidebar -->
+   
         <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
             <!-- Logo -->
             <div class="p-6 border-b">
@@ -62,9 +64,8 @@
             </nav>
         </div>
 
-        <!-- Main Content -->
         <div class="flex-1 overflow-auto">
-            <!-- Header -->
+       
             <header class="bg-white border-b border-gray-200 px-8 py-4">
                 <div class="flex justify-between items-center">
                     <div>
@@ -89,7 +90,7 @@
             <main class="p-8">
                 <!-- Summary Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <!-- Balance Card -->
+                
                     <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl p-6 card-hover">
                         <div class="flex justify-between items-start">
                             <div>
@@ -109,7 +110,7 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-gray-500">Total Income</p>
-                                <h3 class="text-3xl font-bold mt-2 text-gray-800">$3,250.00</h3>
+                                <h3 class="text-3xl font-bold mt-2 text-gray-800">$<?= $total_Income?></h3>
                                 <p class="text-green-500 mt-2"><i class="fas fa-arrow-up mr-1"></i> 8.2% from last month
                                 </p>
                             </div>
@@ -124,9 +125,8 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-gray-500">Total Expenses</p>
-                                <h3 class="text-3xl font-bold mt-2 text-gray-800">$1,399.25</h3>
-                                <p class="text-red-500 mt-2"><i class="fas fa-arrow-up mr-1"></i> 5.1% from last month
-                                </p>
+                                <h3 class="text-3xl font-bold mt-2 text-gray-800">$<?= $total_Expenses?></h3>
+                              
                             </div>
                             <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                                 <i class="fas fa-shopping-cart text-red-600 text-2xl"></i>

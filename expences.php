@@ -1,12 +1,12 @@
 <?php
 include_once __DIR__ . "/database.php";
 
-// Fetch all expenses using your actual column names
+include "totalExpences.php";
+
 $statement = $db->query("SELECT * FROM expenses");
 $expenses = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// Calculate totals using your actual column names
-$totalExpenses = 0;
+
 $monthlyExpenses = 0;
 $currentMonth = date("Y-m");
 
@@ -42,7 +42,7 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
 <body class="bg-gray-50">
 
 <div class="flex h-screen">
-    <!-- Sidebar (unchanged) -->
+
     <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div class="p-6 border-b">
             <div class="flex items-center space-x-3">
@@ -83,9 +83,9 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
         </nav>
     </div>
 
-    <!-- Main Content -->
+
     <div class="flex-1 overflow-auto">
-        <!-- Header -->
+ 
         <header class="bg-white border-b border-gray-200 px-8 py-4">
             <div class="flex justify-between items-center">
                 <div>
@@ -104,10 +104,10 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl p-6">
                     <p>Total Expenses</p>
-                    <h3 class="text-3xl font-bold mt-2">$<?= number_format($totalExpenses, 2) ?></h3>
+                    <h3 class="text-3xl font-bold mt-2">$<?= $total_Expenses ?>.00</h3>
                     <p class="text-red-100 mt-2">All time</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                 <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
                     <p>This Month</p>
                     <h3 class="text-3xl font-bold mt-2 text-gray-800">$<?= number_format($monthlyExpenses, 2) ?></h3>
                 </div>
@@ -117,7 +117,7 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
                 </div>
             </div>
 
-            <!-- Expenses Table - MODIFIED for your actual database structure -->
+           
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full">
@@ -190,19 +190,19 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">Destination *</label>
-                <select name="destination" required
-                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">Select Destination</option>
-                    <option value="food">Food & Dining</option>
-                    <option value="housing">Housing & Rent</option>
-                    <option value="transportation">Transportation</option>
-                    <option value="utilities">Utilities</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="health">Health & Medical</option>
-                    <option value="education">Education</option>
-                    <option value="other">Other</option>
-                </select>
+               <select name="destination" required
+        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+    <option value="">Select Destination</option>
+    <option value="food">Food & Dining</option>
+    <option value="housing">Housing & Rent</option>
+    <option value="transportation">Transportation</option>
+    <option value="utilities">Utilities</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="shopping">Shopping</option>
+    <option value="health">Health & Medical</option>
+    <option value="education">Education</option>
+    <option value="other">Other</option>
+</select>
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">Amount *</label>
@@ -233,7 +233,7 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
 <div id="updateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-xl p-6 w-full max-w-md slide-in">
         <div class="flex justify-between items-center mb-6">
-            
+
             <h3 class="text-xl font-bold text-gray-800">Update Expense</h3>
             <button onclick="closeUpdateModal()" class="text-gray-500 hover:text-gray-700">
                 <i class="fas fa-times text-xl"></i>
@@ -251,17 +251,22 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
                 <label class="block text-gray-700 mb-2">Destination *</label>
                 <select id="updateDestination" name="destination" required
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">Select Destination</option>
-                    <option value="food">Food & Dining</option>
-                    <option value="housing">Housing & Rent</option>
-                    <option value="transportation">Transportation</option>
-                    <option value="utilities">Utilities</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="health">Health & Medical</option>
-                    <option value="education">Education</option>
-                    <option value="other">Other</option>
+                    <option value="food">Food</option>
+    <option value="">Select Destination</option>
+    <option value="food">Food & Dining</option>
+    <option value="housing">Housing & Rent</option>
+    <option value="transportation">Transportation</option>
+    <option value="utilities">Utilities</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="shopping">Shopping</option>
+    <option value="health">Health & Medical</option>
+    <option value="education">Education</option>
+    <option value="other">Other</option>
+                            
                 </select>
+            
+        
+  
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">Amount *</label>

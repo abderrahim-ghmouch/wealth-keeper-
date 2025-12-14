@@ -4,8 +4,7 @@ include_once __DIR__ . "/database.php";
 $stmt = $db->query("select * from incomes", PDO::FETCH_ASSOC);
 $incomes = $stmt->fetchAll();
 
-$stmt = $db->query("select round(sum(amount), 2) as total from incomes", PDO::FETCH_ASSOC);
-$total_Income = $stmt->fetchColumn(0);
+include "totalIncome.php";
 $stmt = $db->query("Select round(sum(amount), 2) as total from incomes where MONTH(date_income) = Month(Now());", PDO::FETCH_ASSOC);
 $this_Month = $stmt->fetchColumn(0);
 $stmt = $db->query("Select round(sum(amount), 2) as total from incomes where YEAR(date_income) = YEAR(Now()) group by MONTH(date_income);", PDO::FETCH_ASSOC);
