@@ -185,7 +185,7 @@ $avreage = $sum / 12;
                                 </tr>
                             </thead>
                             <tbody id="incomesTableBody">
-                                <!-- Incomes will be loaded here dynamically -->
+                              
                                 <?php
                                 if (count($incomes) > 0) {
                                     foreach ($incomes as $income) {
@@ -226,7 +226,7 @@ $avreage = $sum / 12;
         </div>
     </div>
 
-    <!-- Add/Edit Income Modal -->
+
     <div id="incomeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-xl p-6 w-full max-w-md slide-in">
             <div class="flex justify-between items-center mb-6">
@@ -251,13 +251,11 @@ $avreage = $sum / 12;
                     <select id="category" required name="destination"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <option value="">Select Category</option>
-                        <option value="salary">Salary</option>
-                        <option value="freelance">Freelance</option>
-                        <option value="food">Food</option>
-                        <option value="transport">Transport</option>
-                        <option value="shopping">Shoping</option>
-                        <option value="bills">bills</option>
-                        <option value="others">others</option>
+                        <option value="freelance">freelance</option>
+                        <option value="salary">salary</option>
+                        <option value="buisness">buisness</option>
+                        <option value="transfert">transfert</option>
+                      
                     </select>
                     <div id="categoryError" class="text-red-500 text-sm mt-1">Category is required</div>
                 </div>
@@ -317,14 +315,12 @@ $avreage = $sum / 12;
                     <label class="block text-gray-700 mb-2">Category *</label>
                     <select id="category" required name="destination"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="">Select Category</option>
-                        <option value="salary">Salary</option>
-                        <option value="freelance">Freelance</option>
-                        <option value="food">Food</option>
-                        <option value="transport">Transport</option>
-                        <option value="shopping">Shoping</option>
-                        <option value="bills">bills</option>
-                        <option value="others">others</option>
+                            <option value="">Select Category</option>
+                        <option value="freelance">freelance</option>
+                        <option value="salary">salary</option>
+                        <option value="buisness">buisness</option>
+                        <option value="transfert">transfert</option>
+                      
                     </select>
                     <div id="categoryError" class="text-red-500 text-sm mt-1">Category is required</div>
                 </div>

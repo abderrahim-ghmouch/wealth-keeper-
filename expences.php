@@ -1,6 +1,5 @@
 <?php
 include_once __DIR__ . "/database.php";
-
 include "totalExpences.php";
 
 $statement = $db->query("SELECT * FROM expenses");
@@ -11,13 +10,12 @@ $monthlyExpenses = 0;
 $currentMonth = date("Y-m");
 
 foreach ($expenses as $expense) {
-    $totalExpenses += $expense['amount'];
+ $total_Expenses += $expense['amount'];
     if (substr($expense['date_expense'], 0, 7) === $currentMonth) {
         $monthlyExpenses += $expense['amount'];
     }
 }
 
-// Average monthly calculation
 $stmt = $db->query("SELECT ROUND(SUM(amount), 2) as total FROM expenses WHERE YEAR(date_expense) = YEAR(NOW()) GROUP BY MONTH(date_expense)");
 $monthlySums = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -99,7 +97,6 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
             </div>
         </header>
 
-        <!-- Stats Cards -->
         <div class="p-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl p-6">
@@ -144,7 +141,7 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
                                                 onclick="openUpdateModal(<?= $expense['id'] ?>, '<?= htmlspecialchars(addslashes($expense['description'])) ?>', '<?= htmlspecialchars(addslashes($expense['destination'])) ?>', '<?= $expense['amount'] ?>', '<?= $expense['date_expense'] ?>')">
                                             Update
                                         </button>
-                                        <!-- Delete Form -->
+                                       
                                         <form method="post" action="crud_expenses/delExpences.php" class="inline">
                                             <input type="hidden" name="id" value="<?= $expense['id'] ?>">
                                             <button type="submit" onclick="return confirm('Delete this expense?')" 
@@ -193,15 +190,12 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
                <select name="destination" required
         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
     <option value="">Select Destination</option>
-    <option value="food">Food & Dining</option>
-    <option value="housing">Housing & Rent</option>
-    <option value="transportation">Transportation</option>
-    <option value="utilities">Utilities</option>
-    <option value="entertainment">Entertainment</option>
-    <option value="shopping">Shopping</option>
-    <option value="health">Health & Medical</option>
-    <option value="education">Education</option>
-    <option value="other">Other</option>
+    <option value="shoping">shoping</option>
+    <option value="food">food</option>
+    <option value="bills">bills</option>
+    <option value="transport">transport</option>
+    <option value="trips">trips</option>
+   
 </select>
             </div>
             <div>
@@ -251,17 +245,14 @@ $averageExpenses = count($monthlySums) > 0 ? $sum / count($monthlySums) : 0;
                 <label class="block text-gray-700 mb-2">Destination *</label>
                 <select id="updateDestination" name="destination" required
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="food">Food</option>
-    <option value="">Select Destination</option>
-    <option value="food">Food & Dining</option>
-    <option value="housing">Housing & Rent</option>
-    <option value="transportation">Transportation</option>
-    <option value="utilities">Utilities</option>
-    <option value="entertainment">Entertainment</option>
-    <option value="shopping">Shopping</option>
-    <option value="health">Health & Medical</option>
-    <option value="education">Education</option>
-    <option value="other">Other</option>
+                        <option value="">Select Destination</option>
+                        <option value="food">Food</option>
+    <option value="shoping">shoping</option>
+    <option value="food">food</option>
+    <option value="bills">bills</option>
+    <option value="transport">transport</option>
+    <option value="trips">trips</option>
+   
                             
                 </select>
             

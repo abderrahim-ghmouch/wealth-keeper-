@@ -1,4 +1,3 @@
-
 <?php  
 include "../database.php";
 
@@ -14,7 +13,7 @@ $stmt = $db->prepare("UPDATE expenses SET destination = ?, amount = ?, descripti
 $status = $stmt->execute([$destination, $amount, $description, $date_expense,$id]);
 
 if ($status) {
-    header("location: ../expences.php");
+    header("location: /expences.php");
     exit();
 }
 
