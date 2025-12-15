@@ -10,7 +10,7 @@ CREATE TABLE incomes(
 );
 
 CREATE TABLE expenses(
-	id int auto_increment primary key,
+	id  int auto_increment primary key,
     amount DOUBLE NOT NULL,
     date_expense DATE NOT NULL DEFAULT (CURDATE()),
     destination enum('shoping','food','bills','transport','trips')NOT NULL,
